@@ -1,0 +1,6 @@
+playwright
+pytest
+fastapi
+uvicorn
+allure-pytest
+python-multipart

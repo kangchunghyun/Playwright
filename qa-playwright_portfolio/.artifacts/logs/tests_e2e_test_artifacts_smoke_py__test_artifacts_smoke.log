@@ -1,0 +1,8 @@
+nodeid: tests/e2e/test_artifacts_smoke.py::test_artifacts_smoke
+url: http://localhost:5500/login.html
+
+[console]
+
+[requestfailed]
+
+[http>=400]

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Portfolio Login</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-page="login">
+  <main class="page-shell">
+    <section class="card" data-testid="login-card">
+      <p class="eyebrow">QA Playwright Portfolio</p>
+      <h1>로그인</h1>
+      <p class="description">
+        Mock API와 연결된 테스트용 로그인 화면입니다.
+      </p>
+
+      <form class="form" data-testid="login-form" novalidate>
+        <label class="field">
+          <span>아이디</span>
+          <input
+            type="text"
+            name="username"
+            autocomplete="username"
+            data-testid="username-input"
+            placeholder="admin"
+          >
+        </label>
+
+        <label class="field">
+          <span>비밀번호</span>
+          <input
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            data-testid="password-input"
+            placeholder="1234"
+          >
+        </label>
+
+        <button type="submit" class="button" data-testid="login-button">
+          Login
+        </button>
+      </form>
+
+      <div
+        class="message"
+        data-testid="login-message"
+        data-state="idle"
+        aria-live="polite"
+      ></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
