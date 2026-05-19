@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Portfolio Upload</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-page="upload">
+  <main class="page-shell">
+    <section class="card" data-testid="upload-card">
+      <p class="eyebrow">QA Playwright Portfolio</p>
+      <h1>파일 업로드</h1>
+      <p class="description">
+        업로드 로그 생성, 파일 업로드, 상태 조회 흐름을 테스트할 수 있습니다.
+      </p>
+
+      <form class="form" data-testid="upload-form" novalidate>
+        <label class="field">
+          <span>업로드 파일</span>
+          <input
+            type="file"
+            name="file"
+            data-testid="file-input"
+            accept=".tif,.tiff,.jp2,.jpg,.jpeg,.png,.mp4"
+          >
+        </label>
+
+        <button type="submit" class="button" data-testid="upload-button">
+          Upload
+        </button>
+      </form>
+
+      <div class="status-panel" data-testid="upload-panel">
+        <div
+          class="message"
+          data-testid="upload-status"
+          data-state="idle"
+          aria-live="polite"
+        ></div>
+        <div
+          class="message"
+          data-testid="upload-message"
+          data-state="idle"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

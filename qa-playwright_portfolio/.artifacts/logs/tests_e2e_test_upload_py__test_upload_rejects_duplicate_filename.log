@@ -1,0 +1,8 @@
+nodeid: tests/e2e/test_upload.py::test_upload_rejects_duplicate_filename
+url: http://localhost:5500/upload.html
+
+[console]
+
+[requestfailed]
+
+[http>=400]

@@ -1,0 +1,13 @@
+nodeid: tests/e2e/test_upload_files.py::test_upload_accepts_valid_sample_files[sample.tiff]
+url: http://localhost:5500/upload.html
+
+[sample]
+kind: valid
+path: D:\Project\Playwright\qa-playwright_portfolio\test-data\valid\sample.tiff
+upload_name: sample-d31bba3c42f1412a8fa251474184eff9.tiff
+
+[console]
+
+[requestfailed]
+
+[http>=400]

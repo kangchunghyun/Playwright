@@ -52,6 +52,7 @@ def test_upload_rejects_duplicate_filename(page, app_base_url: str) -> None:
 
     upload_page.expect_status_contains("completed")
     upload_page.expect_status_state("success")
+    upload_page.expect_upload_button_enabled()
 
     upload_page.upload_file(
         file_name=duplicate_name,

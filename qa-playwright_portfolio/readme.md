@@ -113,14 +113,18 @@ Playwright 테스트 코드입니다.
 
 ### 샘플 파일 기반 업로드
 
-`test-data/valid`와 `test-data/invalid`의 실제 샘플 파일을 이용해 아래 케이스를 검증합니다.
+`test-data/valid`와 `test-data/invalid`의 실제 파일을 자동 탐지해 테스트를 생성합니다.
 
-- 허용 파일: `jpg`, `jpeg`, `png`, `tif`, `tiff`, `jp2`, `mp4`
-- 비허용 파일: `exe`, `txt`, `zip`
+- `test-data/valid/`: 성공해야 하는 샘플 파일
+- `test-data/invalid/`: 실패해야 하는 샘플 파일
+- `.gitkeep`를 제외한 파일은 자동으로 테스트 대상에 포함됩니다.
+- 허용 확장자: `jpg`, `jpeg`, `png`, `tif`, `tiff`, `jp2`, `mp4`
+- 그 외 확장자는 `invalid/`에 두는 것을 기준으로 사용합니다.
+- `valid/`에 비허용 확장자를 넣거나 `invalid/`에 허용 확장자를 넣으면, 테스트가 분류 오류를 명확한 메시지로 알려줍니다.
 
 ## 테스트 현황
 
-현재 기준 자동화 테스트는 총 24개입니다.
+자동화 테스트 수는 `test-data` 내 샘플 파일 개수에 따라 달라질 수 있습니다.
 
 - 로그인 시나리오
 - 업로드 시나리오
@@ -289,6 +293,12 @@ pytest tests/e2e/test_upload.py -q
 ```bash
 pytest tests/e2e/test_upload_files.py -q
 ```
+
+샘플 파일 분류 규칙 확인:
+
+- `valid/`는 업로드 성공을 기대하는 파일만 둡니다.
+- `invalid/`는 업로드 실패를 기대하는 파일만 둡니다.
+- 예: `sample.tiff.exe`는 마지막 확장자가 `.exe`이므로 `invalid/`에 두어야 합니다.
 
 ## 테스트 설계 원칙
 

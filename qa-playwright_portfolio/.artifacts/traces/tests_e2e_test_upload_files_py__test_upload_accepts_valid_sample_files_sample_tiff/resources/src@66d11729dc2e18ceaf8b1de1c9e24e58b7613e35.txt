@@ -39,26 +39,6 @@ def write_log_file(path: Path, lines: list[str]) -> None:
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def build_sample_metadata_lines(request: pytest.FixtureRequest) -> list[str]:
-    sample_file_path = getattr(request.node, "_sample_file_path", None)
-    upload_file_name = getattr(request.node, "_upload_file_name", None)
-    sample_file_kind = getattr(request.node, "_sample_file_kind", None)
-
-    if not any((sample_file_path, upload_file_name, sample_file_kind)):
-        return []
-
-    metadata_lines = ["[sample]"]
-    if sample_file_kind:
-        metadata_lines.append(f"kind: {sample_file_kind}")
-    if sample_file_path:
-        metadata_lines.append(f"path: {sample_file_path}")
-    if upload_file_name:
-        metadata_lines.append(f"upload_name: {upload_file_name}")
-
-    metadata_lines.append("")
-    return metadata_lines
-
-
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo[None]):
     outcome = yield
@@ -174,7 +154,6 @@ def page(context: BrowserContext, request: pytest.FixtureRequest) -> Page:
             f"nodeid: {request.node.nodeid}",
             f"url: {page.url}",
             "",
-            *build_sample_metadata_lines(request),
             "[console]",
             *console_logs,
             "",
